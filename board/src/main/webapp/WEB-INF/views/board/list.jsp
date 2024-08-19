@@ -4,6 +4,14 @@
 <!DOCTYPE html>
 <%@include file="../layouts/header.jsp"%>
 <h1 class="page-header my-4"><i class="fas fa-list"></i> 글 목록</h1>
+<form method="get" id="filterForm">
+    시작 날짜: <input type="date" name="startDate" required>
+    끝 날짜: <input type="date" name="endDate" required>
+    <input type="submit" value="조회">
+</form>
+<form method="get">
+    <input type="submit" value="초기화">
+</form>
 <table class="table table-hover">
     <thead>
     <tr>

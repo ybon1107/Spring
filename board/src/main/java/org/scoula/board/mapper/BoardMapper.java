@@ -1,10 +1,15 @@
 package org.scoula.board.mapper;
 
+import java.util.Date;
 import java.util.List;
-import org.apache.ibatis.annotations.Select;
+import java.util.Optional;
+
+import org.apache.ibatis.annotations.Param;
 import org.scoula.board.domain.BoardAttachmentVO;
 import org.scoula.board.domain.BoardVO;
 public interface BoardMapper {
+
+    public List<BoardVO> getListDateFilter(@Param("startDate") Date startDate, @Param("endDate") Date endDate);
 
     public List<BoardVO> getList();
 
@@ -20,5 +25,6 @@ public interface BoardMapper {
     public List<BoardAttachmentVO> getAttachmentList(Long bno);
     public BoardAttachmentVO getAttachment(Long no);
     public int deleteAttachment(Long no);
+
 
 }

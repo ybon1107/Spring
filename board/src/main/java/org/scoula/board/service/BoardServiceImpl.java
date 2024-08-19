@@ -1,11 +1,13 @@
 package org.scoula.board.service;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import lombok.RequiredArgsConstructor;
+import org.apache.ibatis.annotations.Param;
 import org.scoula.board.domain.BoardAttachmentVO;
 import org.scoula.board.dto.BoardDTO;
 import org.scoula.common.util.UploadFiles;
@@ -23,6 +25,14 @@ public class BoardServiceImpl implements BoardService
 {
     final private BoardMapper mapper;
     private final static String BASE_DIR = "c:/upload/board";
+
+    @Override
+    public List<BoardDTO> getListDateFilter(@Param("startDate") Date startDate, @Param("endDate") Date endDate){
+        log.info("getListDateFilter..........");
+        return mapper.getListDateFilter(startDate, endDate).stream()
+                .map(BoardDTO::of)
+                .toList();
+    }
 
     @Override
     public List<BoardDTO> getList() {
