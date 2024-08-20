@@ -1,17 +1,33 @@
 package org.scoula.security.config;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j;
+import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.csrf.CsrfFilter;
 import org.springframework.web.filter.CharacterEncodingFilter;
 
 @Configuration
 @EnableWebSecurity
 @Log4j
+@MapperScan(basePackages = {"org.scoula.security.account.mapper"})
+@ComponentScan(basePackages = {"org.scoula.security"})
+@RequiredArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+    private final UserDetailsService userDetailsService;
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
     // 문자셋 필터
     public CharacterEncodingFilter encodingFilter() {
         CharacterEncodingFilter encodingFilter = new CharacterEncodingFilter();
@@ -33,5 +49,35 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginPage("/security/login")
                 .loginProcessingUrl("/security/login")
                 .defaultSuccessUrl("/"); // form 기반 로그인 활성화, 나머지는 모두 디폴트
+
+        http.logout() // 로그아웃 설정 시작
+                .logoutUrl("/security/logout") // POST: 로그아웃 호출 url
+                .invalidateHttpSession(true) // 세션 invalidate
+                .deleteCookies("remember-me", "JSESSION-ID") // 삭제할 쿠키 목록
+                .logoutSuccessUrl("/security/logout"); // GET: 로그아웃 이후 이동할 페이지
+
     }
+
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth)
+            throws Exception {
+        log.info("configure .........................................");
+        // in memory user 정보 삭제 → UserDetailsService와 같이 사용 불가
+        auth.userDetailsService(userDetailsService)
+                .passwordEncoder(passwordEncoder());
+
+//        auth.inMemoryAuthentication()
+//                .withUser("admin")
+//                //.password("{noop}1234")
+//                .password("$2a$10$2K6MsI0bi7VWxEpNRelNvuizXpxAD7BCrxUoGF.EV7R2cg.ODCza2")
+//                .roles("ADMIN","MEMBER"); // ROLE_ADMIN
+//        auth.inMemoryAuthentication()
+//                .withUser("member")
+////                .password("{noop}1234")
+//                .password("$2a$10$2K6MsI0bi7VWxEpNRelNvuizXpxAD7BCrxUoGF.EV7R2cg.ODCza2")
+//                .roles("MEMBER"); // ROLE_MEMBER
+    }
+
+
+
 }
