@@ -1,7 +1,12 @@
 # Github 레포지토리 운영 기본 방법
 
-명령어
+기본 사용법
 -------------
+<br>
+
+### 명령어 모음
+
+<br>
 
 * **현재 경로를 git이 추적할 수 있도록 초기화하는 작업**
 > 
@@ -56,6 +61,52 @@
 >   git merge branch2 //변경 사항 branch
 >   ```
 
+<br><br>
+
+### gitignore 사용 방법
+
+<br>
+
+* **특정 파일 fileName 제외하기**
+```파일 내용
+fileName.확장자
+```
+<br><br>
+
+* **현재 경로에 있는 fileName_1 만 제외하기. (다른경로 fileName_1 말고)**
+```파일 내용
+/fileName.js
+```
+<br><br>
+
+* **특정 폴더 node_module 안의 파일 다 제외하기**
+```파일 내용
+node_module/
+```
+ <br><br>
+ 
+* **특정 경로의 특정 파일 제외하기**
+```파일 내용
+folder/my.txt
+```
+<br><br>
+
+* **특정 경로 아래의 모든 fileName_2 제외하기**
+```파일 내용
+folder/**/fileName_2.txt
+```
+<br><br>
+ 
+* **특정 확장자 파일 다 제외하기**
+```파일 내용
+*.txt
+```
+<br><br>
+ 
+* **예외 만들기**
+```파일 내용
+!fileName.txt
+```
 <br><br>
 
 오류 발생에 대한 대응
