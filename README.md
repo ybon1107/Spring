@@ -14,7 +14,7 @@
 >    git init
 >    ```
 
-<br><br><br>
+<br><br>
 
 * **원격 저장소 추가**
 > 
@@ -23,7 +23,7 @@
 >    git remote -v # 연결된 원격저장소 목록 조회
 >    ```
 
-<br><br><br>
+<br><br>
 
 * **원격 저장소 데이터 로컬 저장소로 가져오기**
 > 
@@ -75,7 +75,7 @@ fileName.확장자
 
 * **현재 경로에 있는 fileName_1 만 제외하기. (다른경로 fileName_1 말고)**
 ```파일 내용
-/fileName.js
+/fileName.확장자
 ```
 <br><br>
 
@@ -87,25 +87,25 @@ node_module/
  
 * **특정 경로의 특정 파일 제외하기**
 ```파일 내용
-folder/my.txt
+folder/my.확장자
 ```
 <br><br>
 
 * **특정 경로 아래의 모든 fileName_2 제외하기**
 ```파일 내용
-folder/**/fileName_2.txt
+folder/**/fileName_2.확장자
 ```
 <br><br>
  
 * **특정 확장자 파일 다 제외하기**
 ```파일 내용
-*.txt
+*.확장자
 ```
 <br><br>
  
 * **예외 만들기**
 ```파일 내용
-!fileName.txt
+!fileName.확장자
 ```
 <br><br>
 
