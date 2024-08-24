@@ -68,6 +68,12 @@
 
 <br>
 
+* **gitignore가 적용되지 않을 때**
+>   ```bash
+>   git rm -r --cached . // 이후에는 "로컬 작업 원격 저장소로 보내기" 순차 진행
+>   ```
+
+<br><br>
 * **특정 파일 fileName 제외하기**
 >   ```파일 내용
 >   fileName.확장자
