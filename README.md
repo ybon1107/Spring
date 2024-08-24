@@ -64,7 +64,7 @@
 <br><br>
 
 ### gitignore 사용 방법
-* git init 을 한 폴더 에다가 .gitignore 이라는 이름으로 파일을 하나 만들어준다.
+- git init 을 한 폴더 에다가 .gitignore 이라는 이름으로 파일을 하나 만들어준다.
 
 <br>
 
