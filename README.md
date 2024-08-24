@@ -7,12 +7,12 @@
 >    >
     git init
 
->  원격 저장소 추가
->    >
-
-    git remote add "별칭" "git 주소.git" //향후 push or pull 작업을 진행할 때 "별칭"으로 지정한 원격 저장소에 접근할 수 있음. git clone시 default 별칭은 origin
-    git remote -v //연결된 원격저장소 목록 조회
-
+> 원격 저장소 추가
+> 
+>    ```bash
+>    git remote add "별칭" "git 주소.git" # 향후 push or pull 작업을 진행할 때 "별칭"으로 지정한 원격 저장소에 접근할 수 있음. git clone 시 default 별칭은 origin
+>    git remote -v # 연결된 원격저장소 목록 조회
+>    ```
 
 > 원격 저장소 데이터 로컬 저장소로 가져오기
 >    >
