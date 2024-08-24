@@ -4,13 +4,12 @@
 -------------
 
 >  현재 경로를 git이 추적할 수 있도록 초기화하는 작업
-  ```
   git init
-  ```
+
 
 >  원격 저장소 추가
-   git remote add "별칭" "git 주소.git" //향후 push or pull 작업을 진행할 때 "별칭"으로 지정한 원격 저장소에 접근할 수 있음. git clone시 default 별칭은 origin
-   git remote -v //연결된 원격저장소 목록 조회
+  git remote add "별칭" "git 주소.git" //향후 push or pull 작업을 진행할 때 "별칭"으로 지정한 원격 저장소에 접근할 수 있음. git clone시 default 별칭은 origin
+  git remote -v //연결된 원격저장소 목록 조회
 
 
 > 원격 저장소 데이터 로컬 저장소로 가져오기
@@ -29,9 +28,6 @@
   git add "파일이름 또는 경로" // 스테이징에 변경 사항 저장
   git commit -m "커밋 메세지" // 본인이 수정한 사항들에 대한 기록 남기며 깃 저장소에 넘기기 직전 단계
   git push "별칭" "브랜치명" // 선택한 원격저장소 그리고 branch에 변경 사항들 저장
-
-
-
 
 오류 발생에 대한 대응
 -------------
